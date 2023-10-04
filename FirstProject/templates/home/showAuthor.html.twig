@@ -1,0 +1,50 @@
+{{n| upper}}
+<br>
+{% for k in auth %}
+
+ {{ k.id}}
+{{ k.username}}
+{{ k.email}}
+
+{% endfor %}
+
+
+
+{{dump (auth)}}
+
+{% for k in auth %}
+
+{% if  k.nb_books > 0 %}
+{{ k.username}}   {{ k.nb_books}} <button type="submit"> buy</button>  <br> 
+ <img src="{{k.picture}}" alt="img"  /> <br>
+
+{%else%}
+{{ k.username}} <br>
+<a href="{{ path('d', { 'id': k.username}) }}" > details </a>
+{%endif%}
+{%endfor%}
+
+{# qts 5 #}
+
+{%for i in auth%}
+{{ i.username | upper }} 
+{%endfor%} <br>
+
+
+
+
+{# qts 7#}
+{%set nb=0 %}
+{%for i in auth%}
+{%set nb=nb+i.nb_books %}
+{%endfor%}
+<h1> le nombre totale de livres est  {{nb}} </h1> 
+
+
+{# qts 8 9 10  #}
+{%for i in auth%}
+<a href="{{ path('d', { 'id': i.username}) }}" > details </a> 
+
+{{i.username}} 
+{%endfor%}
+ 
